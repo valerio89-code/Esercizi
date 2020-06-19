@@ -12,6 +12,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             Console.WriteLine("prima stringa di prova");
+            Console.WriteLine("Prima riga da azure");
             Console.ReadLine();
         }
 
