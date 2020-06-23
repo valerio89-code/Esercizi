@@ -3,47 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/*
- Calcolare la somma di tutti i numeri interi compresi 
- fra due valori positivi dati in input a e b.
- */
+
 namespace Esercitazione
 {
     class Program
     {
+        /*
+Fare un programma che chieda all'utente N numeri diversi e poi ne calcoli la media,
+con N letto da tastiera;
+ */
         static void Main(string[] args)
         {
-            //leggo il primo numero
-            Console.WriteLine("Inserire un numero positivo");
-            string line = Console.ReadLine();
-            int a = Convert.ToInt32(line);
-            //leggo il secondo numero
-            Console.WriteLine("Inserire un altro numero positivo");
-            int b = int.Parse(Console.ReadLine());
-
+            Console.WriteLine("Inserire il numero N");
+            int n = int.Parse(Console.ReadLine());
             int somma = 0;
-            //bool aMinoreUgualeB = a <= b;
-            //var estremoSuperiore = aMinoreUgualeB ? b : a;
-            //for (int i = aMinoreUgualeB ? a : b; i < estremoSuperiore; i++)
-            //{
-            //    somma = somma + i;
-            //}
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine("inserisci un numero");
+                somma += Convert.ToInt32(Console.ReadLine());
+            }
 
-            if (a <= b)
-            {
-                for (int i = a; i <= b; i++)
-                {
-                    somma = somma + i;
-                }
-            }
-            else
-            {
-                for (int i = b; i <= a; i++)
-                {
-                    somma = somma + i;
-                }
-            }
-            Console.WriteLine($"La somma dei numeri da {a} a {b} è {somma}");
+            double media = (double)somma / n;
+            Console.WriteLine($"La media dei {n} numeri inseriti è {media}");
         }
     }
 }
