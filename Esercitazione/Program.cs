@@ -9,28 +9,29 @@ namespace Esercitazione
 {
     class Program
     {
-        /*
-Scrivere un programma che chieda all'utente un numero intero qualsiasi
-finchè l'utente inserisce il 99. a quel punto deve uscire.
-Per ogni iterazione, stampare il massimo numero che si è scritto fino 
-a quel momento.
- */
         static void Main(string[] args)
         {
-            int n = 0;
-            int max = 0;
-            while (n != 99)
+            int[] arr = new int[] { 1, 2, 3, 4, 5 };
+            int[] arr2;
+            //copiare i valori dell'array arr nell'array arr2
+            arr2 = new int[arr.Length];
+            
+            for (int i = 0; i < arr.Length; i++)
             {
-                Console.WriteLine("inserire un numero intero");
-                n = int.Parse(Console.ReadLine());
-                if (n > max)
-                {
-                    //ho trovato un nuovo massimo
-                    max = n;
-                }
-                Console.WriteLine($"il numero massimo inserito finora è: {max}");
+                arr2[i] = arr[i]; 
             }
-            Console.WriteLine("È stato inserito il numero 99");
+            arr[0] = 98;
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine($"l'elemento {i} di arr vale {arr[i]}");
+            }
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine($"l'elemento {i} di arr2 vale {arr2[i]}");
+            }
+
         }
     }
 }
