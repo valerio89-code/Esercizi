@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,30 +10,27 @@ namespace Esercitazione
     class Program
     {
         /*
-Fare un programma che chieda all'utente un numero N e stampi i primi
-N numeri della sequenza di fibonacci.
-0 1 1 2 3 5 8 13 21 34
+Scrivere un programma che chieda all'utente un numero intero qualsiasi
+finchè l'utente inserisce il 99. a quel punto deve uscire.
+Per ogni iterazione, stampare il massimo numero che si è scritto fino 
+a quel momento.
  */
         static void Main(string[] args)
         {
-            Console.WriteLine("Quanti numeri di fibonacci vuoi vedere?");
-            int n = int.Parse(Console.ReadLine());
-            int f1 = 0;
-            int f2 = 1;
-            for (int i = 0; i < n; i++)
+            int n = 0;
+            int max = 0;
+            while (n != 99)
             {
-                if (i > 1)
+                Console.WriteLine("inserire un numero intero");
+                n = int.Parse(Console.ReadLine());
+                if (n > max)
                 {
-                    int f = f2 + f1;
-                    f1 = f2;
-                    f2 = f;
-                    Console.WriteLine(f);
+                    //ho trovato un nuovo massimo
+                    max = n;
                 }
-                else
-                {
-                    Console.WriteLine(i);
-                }
+                Console.WriteLine($"il numero massimo inserito finora è: {max}");
             }
+            Console.WriteLine("È stato inserito il numero 99");
         }
     }
 }
