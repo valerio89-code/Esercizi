@@ -11,47 +11,35 @@ namespace Esercitazione
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Inserisci la dimensione del vettore");
-            int n = int.Parse(Console.ReadLine());
+            var rand = new Random();
+            int n = 100000;
             int[] vect = new int[n];
             for (int i = 0; i < n; i++)
             {
-                Console.WriteLine($"Inserisci la componente {i} del vettore");
-                vect[i] = int.Parse(Console.ReadLine());
+                vect[i] = rand.Next(0, 100);
             }
+            int somma = 0, 
+                max = 0, 
+                min = 100;
 
-            bool isCrescente = true;
-            for (int i = 0; i < n - 1; i++)
+            foreach (var item in vect)
             {
-                if (vect[i] >= vect[i + 1])
+                somma += item;
+                if (min > item)
                 {
-                    isCrescente = false;
-                    break;
+                    min = item;
                 }
-            }
-            if(isCrescente)
-            {
-                Console.WriteLine("Il vettore inserito è crescente");
-            }
-
-            bool isDecrescente = true;
-            for (int i = 0; i < n - 1; i++)
-            {
-                if (vect[i] <= vect[i + 1])
+                if(max < item)
                 {
-                    isDecrescente = false;
-                    break;
+                    max = item;
                 }
+                //somma = somma + item;
             }
-            if (isDecrescente)
-            {
-                Console.WriteLine("il vettore inserito è decrescente");
-            }
-
-            if(!isCrescente && !isDecrescente)
-            {
-                Console.WriteLine("il vettore non è né crescente né decrescente");
-            }
+            double media = (double)somma / n;
+            Console.WriteLine($"la somma è {somma}");
+            Console.WriteLine($"la media è {media}");
+            Console.WriteLine($"il massimo è {max}");
+            Console.WriteLine($"la minimo è {min}");
         }
     }
 }
