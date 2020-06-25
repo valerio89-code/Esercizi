@@ -11,25 +11,25 @@ namespace Esercitazione
     {
         static void Main(string[] args)
         {
-            int[] arr = new int[] { 1, 2, 3, 4, 5 };
-            int[] arr2;
-            //copiare i valori dell'array arr nell'array arr2
-            arr2 = new int[arr.Length];
-            
-            for (int i = 0; i < arr.Length; i++)
+            Console.WriteLine("Inserisci la dimensione del vettore");
+            int n = int.Parse(Console.ReadLine());
+             int[] vect = new int[n];
+            for (int i = 0; i < n; i++)
             {
-                arr2[i] = arr[i]; 
-            }
-            arr[0] = 98;
-
-            for (int i = 0; i < arr.Length; i++)
-            {
-                Console.WriteLine($"l'elemento {i} di arr vale {arr[i]}");
+                Console.WriteLine($"Inserisci la componente {i} del vettore");
+                vect[i] = int.Parse(Console.ReadLine());
             }
 
-            for (int i = 0; i < arr.Length; i++)
+            int[] vectInverso = new int[n];
+            for (int i = 0; i <= n-1; i++)
             {
-                Console.WriteLine($"l'elemento {i} di arr2 vale {arr2[i]}");
+                vectInverso[n - 1 - i] = vect[i];
+            }
+
+            Console.WriteLine("il vettore invertito è");
+            foreach (var item in vectInverso)
+            {
+                Console.WriteLine(item);
             }
 
         }
