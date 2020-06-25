@@ -13,25 +13,45 @@ namespace Esercitazione
         {
             Console.WriteLine("Inserisci la dimensione del vettore");
             int n = int.Parse(Console.ReadLine());
-             int[] vect = new int[n];
+            int[] vect = new int[n];
             for (int i = 0; i < n; i++)
             {
                 Console.WriteLine($"Inserisci la componente {i} del vettore");
                 vect[i] = int.Parse(Console.ReadLine());
             }
 
-            int[] vectInverso = new int[n];
-            for (int i = 0; i <= n-1; i++)
+            bool isCrescente = true;
+            for (int i = 0; i < n - 1; i++)
             {
-                vectInverso[n - 1 - i] = vect[i];
+                if (vect[i] >= vect[i + 1])
+                {
+                    isCrescente = false;
+                    break;
+                }
+            }
+            if(isCrescente)
+            {
+                Console.WriteLine("Il vettore inserito è crescente");
             }
 
-            Console.WriteLine("il vettore invertito è");
-            foreach (var item in vectInverso)
+            bool isDecrescente = true;
+            for (int i = 0; i < n - 1; i++)
             {
-                Console.WriteLine(item);
+                if (vect[i] <= vect[i + 1])
+                {
+                    isDecrescente = false;
+                    break;
+                }
+            }
+            if (isDecrescente)
+            {
+                Console.WriteLine("il vettore inserito è decrescente");
             }
 
+            if(!isCrescente && !isDecrescente)
+            {
+                Console.WriteLine("il vettore non è né crescente né decrescente");
+            }
         }
     }
 }
