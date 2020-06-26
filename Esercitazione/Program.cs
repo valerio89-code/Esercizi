@@ -10,26 +10,39 @@ namespace Esercitazione
     class Program
     {
         /*
-        Dobbiamo creare un programma che stampi i nomi
-        degli studenti di ogni classe di un istituto con 3 classi.
-        Ogni classe ha un numero diverso di studenti,
-        quindi deve chiedere preliminarmente per ogni classe,
-        quanti studenti ci sono e solo dopo chiederne i nomi.
+Scrivere un programma che crei un vettore di 100 interi 
+contenente numeri casuali compresi tra 1-100.
+Successivamente il programma chiede all’utente di inserire 
+un numero compreso tra 1-100 e ricerca tale numero
+nel vettore.
+Per ogni occorrenza stampa la posizione in cui è stato 
+trovato e alla fine della ricerca riporta
+anche il numero di elementi trovati.
+
 
         */
         static void Main(string[] args)
         {
-            string[] test = new string[] { "A", "C", "S", "B" };
-            foreach (var str in test)
+            var rand = new Random();
+            int[] vect = new int[100];
+            for (int i = 0; i < vect.Length; i++)
             {
-                Console.WriteLine(str);
+                vect[i] = rand.Next(0, 10);
             }
-            Array.Sort(test);
-            foreach (var str in test)
+
+            Console.WriteLine("Inserisci un numero da cercare nel vettore");
+            int numScelto = int.Parse(Console.ReadLine());
+
+            int occorrenzeNumScelto = 0;
+            for (int i = 0; i < vect.Length; i++)
             {
-                Console.WriteLine(str);
+                if(vect[i] == numScelto)
+                {
+                    Console.WriteLine($"numero {numScelto} trovato in posizione {i}");
+                    occorrenzeNumScelto++;
+                }
             }
-            return;
+            Console.WriteLine($"Il numero {numScelto} è stato trovato {occorrenzeNumScelto} volte");
         }
     }
 }
