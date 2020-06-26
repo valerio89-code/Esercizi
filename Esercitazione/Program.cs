@@ -19,29 +19,17 @@ namespace Esercitazione
         */
         static void Main(string[] args)
         {
-            string[][] classi = new string[3][];
-            for (int i = 0; i < classi.Length; i++)
+            string[] test = new string[] { "A", "C", "S", "B" };
+            foreach (var str in test)
             {
-                Console.WriteLine($"Quanti studenti ci sono nella classe {i}?");
-                int numStudenti = int.Parse(Console.ReadLine());
-                classi[i] = new string[numStudenti];
-                for (int j = 0; j < numStudenti; j++)
-                {
-                    Console.WriteLine("inserisci il nome di un alunno");
-                    classi[i][j] = Console.ReadLine();
-                }
-
-                Array.Sort(classi[i]);
+                Console.WriteLine(str);
             }
-            Console.Clear();
-            for (int i = 0; i < classi.Length; i++)
+            Array.Sort(test);
+            foreach (var str in test)
             {
-                Console.WriteLine($"Nella classe {i} ci sono {classi[i].Length} studenti e sono:");
-                for (int j = 0; i < classi[i].Length; j++)
-                {
-                    Console.WriteLine(classi[i][j]);
-                }
+                Console.WriteLine(str);
             }
+            return;
         }
     }
 }
