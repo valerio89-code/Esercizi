@@ -10,39 +10,65 @@ namespace Esercitazione
     class Program
     {
         /*
-Scrivere un programma che crei un vettore di 100 interi 
-contenente numeri casuali compresi tra 1-100.
-Successivamente il programma chiede all’utente di inserire 
-un numero compreso tra 1-100 e ricerca tale numero
-nel vettore.
-Per ogni occorrenza stampa la posizione in cui è stato 
-trovato e alla fine della ricerca riporta
-anche il numero di elementi trovati.
-
+Due colleghi intendono fissare una riunione, pertanto devono 
+identificare dei giorni nei quali sono entrambi liberi da 
+impegni. A tale scopo, essi realizzano un programma che 
+permetta a ciascuno di immettere le proprie disponibilità, e
+che identifichi i giorni nei quali entrambi sono liberi. 
+(ipotizzare che i giorni siano interi)
 
         */
         static void Main(string[] args)
         {
-            var rand = new Random();
-            int[] vect = new int[100];
-            for (int i = 0; i < vect.Length; i++)
+            const int dimMese = 31;
+            int[] dispV = new int[dimMese];
+            int[] dispA = new int[dimMese];
+            for (int i = 0; i < dimMese; i++)
             {
-                vect[i] = rand.Next(0, 10);
-            }
-
-            Console.WriteLine("Inserisci un numero da cercare nel vettore");
-            int numScelto = int.Parse(Console.ReadLine());
-
-            int occorrenzeNumScelto = 0;
-            for (int i = 0; i < vect.Length; i++)
-            {
-                if(vect[i] == numScelto)
+                Console.WriteLine("Valerio, hai altre disponibilità?");
+                string disp = Console.ReadLine();
+                if (disp == "no")
                 {
-                    Console.WriteLine($"numero {numScelto} trovato in posizione {i}");
-                    occorrenzeNumScelto++;
+                    break;
+                }
+                else
+                {
+                    dispV[i] = int.Parse(disp);
                 }
             }
-            Console.WriteLine($"Il numero {numScelto} è stato trovato {occorrenzeNumScelto} volte");
+
+            for (int i = 0; i < dimMese; i++)
+            {
+                Console.WriteLine("Andrea, hai altre disponibilità?");
+                string disp = Console.ReadLine();
+                if (disp == "no")
+                {
+                    break;
+                }
+                else
+                {
+                    dispA[i] = int.Parse(disp);
+                }
+            }
+
+            for (int i = 0; i < dispV.Length; i++)
+            {
+                if (dispV[i] == 0) break;
+
+                for (int j = 0; j < dispA.Length; j++)
+                {
+                    if (dispA[j] == 0) break;
+                    if (dispV[i] == dispA[j])
+                    {
+                        Console.WriteLine(dispV[i]);
+                    }
+                }
+            }
+
+       
+
+
+
         }
     }
 }
