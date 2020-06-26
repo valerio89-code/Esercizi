@@ -9,37 +9,39 @@ namespace Esercitazione
 {
     class Program
     {
+        /*
+        Dobbiamo creare un programma che stampi i nomi
+        degli studenti di ogni classe di un istituto con 3 classi.
+        Ogni classe ha un numero diverso di studenti,
+        quindi deve chiedere preliminarmente per ogni classe,
+        quanti studenti ci sono e solo dopo chiederne i nomi.
+
+        */
         static void Main(string[] args)
         {
-            var rand = new Random();
-            int n = 100000;
-            int[] vect = new int[n];
-            for (int i = 0; i < n; i++)
+            string[][] classi = new string[3][];
+            for (int i = 0; i < classi.Length; i++)
             {
-                vect[i] = rand.Next(0, 100);
-            }
-            int somma = 0, 
-                max = 0, 
-                min = 100;
+                Console.WriteLine($"Quanti studenti ci sono nella classe {i}?");
+                int numStudenti = int.Parse(Console.ReadLine());
+                classi[i] = new string[numStudenti];
+                for (int j = 0; j < numStudenti; j++)
+                {
+                    Console.WriteLine("inserisci il nome di un alunno");
+                    classi[i][j] = Console.ReadLine();
+                }
 
-            foreach (var item in vect)
-            {
-                somma += item;
-                if (min > item)
-                {
-                    min = item;
-                }
-                if(max < item)
-                {
-                    max = item;
-                }
-                //somma = somma + item;
+                Array.Sort(classi[i]);
             }
-            double media = (double)somma / n;
-            Console.WriteLine($"la somma è {somma}");
-            Console.WriteLine($"la media è {media}");
-            Console.WriteLine($"il massimo è {max}");
-            Console.WriteLine($"la minimo è {min}");
+            Console.Clear();
+            for (int i = 0; i < classi.Length; i++)
+            {
+                Console.WriteLine($"Nella classe {i} ci sono {classi[i].Length} studenti e sono:");
+                for (int j = 0; i < classi[i].Length; j++)
+                {
+                    Console.WriteLine(classi[i][j]);
+                }
+            }
         }
     }
 }
